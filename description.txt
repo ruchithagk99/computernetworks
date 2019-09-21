@@ -1,0 +1,66 @@
+Question given
+B7.fetching of partial contents. Identify a web page having at least 10KB of size. Download this web page and save it locally. Now download this web page in chunks of 2K each i.e. bytes range 0-1999, 2000-3999, 4000-5999, ... and so on and save each chunk. Merge all the chunks to a single file. Compare this file with original single file received. Verify that Both files are identical
+
+COMMAND USED TO VIEW THE CONTENT SIZE OF THE WEB PAGE
+C:\Users\ruchithagk\Desktop>curl -I https://www.theguardian.com/environment/2007/aug/09/environment
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+ETag: W/"hash658180806733251998"
+Link: <https://assets.guim.co.uk/stylesheets/87d77365f09bb15111b549c0d67d1390/content.garnett.css>; rel=preload; as=style; nopush,<https://assets.guim.co.uk/polyfill.io/v3/polyfill.min.js?rum=0&features=es6,es7,es2017,default-3.6,HTMLPictureElement,IntersectionObserver,IntersectionObserverEntry&flags=gated&callback=guardianPolyfilled&unknown=polyfill&clearCache=3>; rel=preload; as=script; nopush,<https://assets.guim.co.uk/javascripts/9463cf6582acdcea2341/graun.standard.js>; rel=preload; as=script; nopush,<https://assets.guim.co.uk/javascripts/b449e9d7e8795e42ae7f/graun.commercial.js>; rel=preload; as=script; nopush
+Content-Length: 744741
+Accept-Ranges: bytes
+Date: Sat, 21 Sep 2019 15:06:13 GMT
+Age: 1605
+Connection: keep-alive
+Set-Cookie: GU_mvt_id=639221; expires=Fri, 20 Dec 2019 15:06:13 GMT; path=/; domain=.theguardian.com; Secure
+X-Timer: S1569078373.345752,VS0,VE5
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Content-Security-Policy: default-src https:; script-src https: 'unsafe-inline' 'unsafe-eval'; frame-src https: data:; style-src https: 'unsafe-inline'; img-src https: data: blob:; media-src https: data: blob:; font-src https: data:; connect-src https: wss:
+Referrer-Policy: no-referrer-when-downgrade
+Feature-Policy: camera 'none'; microphone 'none'; midi 'none'
+X-GU-Edition: int
+Cache-Control: max-age=60, stale-while-revalidate=6, stale-if-error=864000, private
+Vary: Accept-Encoding,User-Agent
+Set-Cookie: GU_geo_continent=AS; path=/; Secure
+
+COMMAND USED TO DOWNLOAD 10KB OF THE WEB PAGE INTO OUTPUT.TXT FILE
+C:\Users\ruchithagk\Desktop>curl -r 0-9999 https://www.theguardian.com/environment/2007/aug/09/environment -o output.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 10000  100 10000    0     0  10000      0  0:00:01 --:--:--  0:00:01 15243
+
+COMMANDS USED TO DOWNLOAD THE WEBPAGE IN CHUNKS OF 2KB UNTIL WE REACH 10KB 
+C:\Users\ruchithagk\Desktop>curl -r 0-1999 https://www.theguardian.com/environment/2007/aug/09/environment -o chunks.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2000  100  2000    0     0   2000      0  0:00:01 --:--:--  0:00:01  2460
+
+C:\Users\ruchithagk\Desktop>curl -r 2000-3999 https://www.theguardian.com/environment/2007/aug/09/environment >>chunks.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2000  100  2000    0     0   2000      0  0:00:01 --:--:--  0:00:01  2372
+
+C:\Users\ruchithagk\Desktop>curl -r 4000-5999 https://www.theguardian.com/environment/2007/aug/09/environment >>chunks.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2000  100  2000    0     0   2000      0  0:00:01  0:00:01 --:--:--  1968
+
+C:\Users\ruchithagk\Desktop>curl -r 6000-7999 https://www.theguardian.com/environment/2007/aug/09/environment >>chunks.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2000  100  2000    0     0   2000      0  0:00:01 --:--:--  0:00:01  2560
+
+C:\Users\ruchithagk\Desktop>curl -r 8000-9999 https://www.theguardian.com/environment/2007/aug/09/environment >>chunks.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2000  100  2000    0     0   2000      0  0:00:01 --:--:--  0:00:01  2063
+
+CONCLUSION
+upon viewing the contents of the file output.txt and step by step increase in the contents of the file chunks.txt when the web page is downloaded in chunks, it is clear that both the files are identical as expected. no changes were caused upon downloading it in chunks with respect to the original file
+
+
+
+
