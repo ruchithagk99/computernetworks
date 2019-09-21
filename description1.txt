@@ -1,0 +1,12 @@
+QUESTION
+A3.Write a program that takes two arguments as follows
+  first ip address / subnet mask (format a.b.c.d/n)
+  Second ip address / subnet mask (format a.b.c.d/n)
+  Program should check if subnet of one contains the subnet of other and output accordingly i.e.
+    "first subnet subsume second subnet", or
+    "second subnet subsumes first subnet"
+
+SOLUTION
+The java program to solve the problem is in javaprogram.txt
+the program accepts two inputs subnets in CIDR format, if the format is wrong an exception is thrown showing how to provide inputs and exits
+if the inputs are in the right format, subset and ip address is converted to binary format and AND operation is performed and the same same is done to the other input if the result is same for  both the inputs one subnet subsumes the other
