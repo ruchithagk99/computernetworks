@@ -1,0 +1,33 @@
+C:\Users\ruchithagk>curl -i http://192.168.0.7:8080/rgk/
+HTTP/1.1 200 OK
+Date: Sat, 21 Sep 2019 17:19:18 GMT
+Server: Apache/2.4.41 (Win64) OpenSSL/1.1.1c PHP/7.3.9
+Last-Modified: Wed, 18 Sep 2019 17:06:31 GMT
+ETag: "288-592d6dbce925c"
+Accept-Ranges: bytes
+Content-Length: 648
+Content-Type: text/html
+
+C:\Users\ruchithagk>curl -i http://192.168.0.7:8080/3
+HTTP/1.1 404 Not Found
+Date: Sat, 21 Sep 2019 17:19:49 GMT
+Server: Apache/2.4.41 (Win64) OpenSSL/1.1.1c PHP/7.3.9
+Vary: accept-language,accept-charset
+Accept-Ranges: bytes
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=utf-8
+Content-Language: en
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Object not found!</title>
+<link rev="made" href="mailto:postmaster@localhost" />
+<style type="text/css"><!--/*--><![CDATA[/*><!--*/
+    body { color: #000000; background-color: #FFFFFF; }
+    a:link { color: #0000CC; }
+    p, address {margin-left: 3em;}
+    span {font-size: smaller;}
+/*]]>*/--></style>
