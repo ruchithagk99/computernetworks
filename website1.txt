@@ -1,0 +1,38 @@
+<html>
+
+<head>
+  <title> RURU </title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+
+<div id="box">
+  
+  <div id="header">
+    <h1> WEBSITE TITLE </h1>
+  </div>
+
+  <div id="data">
+   <div id="nav">
+     <h3> PORTAL </h3>
+        <ul>
+          <li><a class="selected" href=""> Home </a></li>
+          <li> About </li>
+          <li> Contact </li>
+        </ul>
+   </div>
+   <div id="main">
+      <h2> HOME PAGE </h2>
+      <p> blah blah... </p>
+      <p> blah blah 2... </p>
+   </div>
+ </div>
+  <div id="footer">
+    Copyright &copy; 2019 RURU.
+  </div>
+</div>
+
+</body>
+
+</html>

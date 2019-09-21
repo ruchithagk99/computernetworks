@@ -1,0 +1,25 @@
+QUESTION
+B02. Create web pages and corresponding web requests that result in following status codes
+  200
+  302
+  404
+  403
+UNDERSTANDING
+the meaning of the following code
+202- Accepted response status code indicates that the request has been received but not yet acted upon. It is non-committal, meaning that there is no way for the HTTP to later send an     asynchronous response indicating the outcome of processing the request.
+302- The HyperText Transfer Protocol (HTTP) 302 Found redirect status response code indicates that the resource requested has been temporarily moved to the URL given by the Location         header.Mar 23, 2019
+404-The HTTP 404 Not Found Error means that the webpage you were trying to reach could not be found on the server. It is a Client-side Error which means that either the page has been     removed or moved and the URL was not changed accordingly, or that you typed in the URL incorrectly.
+403-HTTP 403 is a standard HTTP status code communicated to clients by an HTTP server to indicate that access to the requested URL by the client is Forbidden for some reason. The server     understood the request, but will not fulfil it due to client related issues.(index.html or index.php)
+
+THE HTML CODE FOR THE WEBPAGE IS UPLOADED AS WEBSITE1.TXT WEBSITE1STYLE.TXT
+PROCEDURE USED:
+- The xampp server was initiated and Apace server was used to load the website and MySQL was also initiated for data storage.
+- website html code base was uploaded on to the xampp server in the name of index.html and its CSS file as style.css .
+- XAMPP server was reconfigured to host the website in the local network using network ip address.
+
+COMMANDS USED TO OBTAIN HTTP STATUS CODES 
+-curl -I websitelink
+ result -200 ok
+-curl -I wrong website link
+ result-404:not found
+COMMANDS AND RESULTS OBTAINED ON THE TERMINAL ARE UPLOADED AS COMMANDS2
