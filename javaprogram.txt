@@ -1,0 +1,90 @@
+import java.util.*;
+class Subnets{
+
+    static int[] andOperation(ArrayList<Integer> ipInBinary,int[] subnetInBinary){
+        int[] returnResult = new int[32];
+        for(int i = 0; i < ipInBinary.size(); i++){
+            //and operation between the ipInBinary and subnetInBinary bit by bit
+            returnResult[i] = ipInBinary.get(i) & subnetInBinary[i];
+        }
+        return returnResult;
+    }
+
+    static int[] subnetFromCidr(int cidr){
+        int[] subnet = new int[32];
+        for(int i = 0; i < cidr;i++){
+            //make all bits till cidr 1,the rest 0
+            subnet[i] = 1;
+        }
+        return subnet;
+    }
+
+    static int[] decimalToBinary(int n) 
+    { 
+        // array to store binary number only till 255.255.255.255
+        int[] binaryNumber = new int[8]; 
+  
+        // counter for binary array 
+        int i = 0; 
+        while (n > 0) { 
+            // storing the remainder in binary array 
+            binaryNumber[i] = n % 2; 
+            n = n / 2; 
+            i++; 
+        } 
+        int[] returnBinaryNumber = new int[8];
+        int k = 8;
+        for(int j = 0; j < 8; j++){
+            returnBinaryNumber[k - 1] = binaryNumber[j]; 
+            k = k - 1;
+        }
+
+        return returnBinaryNumber;
+
+    } 
+
+    static ArrayList<Integer> convertIpToBinary(String ip){
+        String[] splitIp = ip.split("\\.");
+        ArrayList<Integer> ipInBinary = new ArrayList<Integer>();
+        for(int i = 0; i < splitIp.length; i++){
+            int[] binaryNumber = decimalToBinary(Integer.parseInt(splitIp[i]));
+            for(int number:binaryNumber){
+                ipInBinary.add(number);
+            }
+        }
+        return ipInBinary;
+    } 
+
+    public static void main(String[] args){
+        //check if the arguments are given and valid
+        if(args.length != 2){
+            System.out.println("Usage: java subnets firstip/subnet-in-cidr secondip/subnet-in-cidr");
+            System.exit(1);
+        }
+        try {
+            String firstipWithSubnet = args[0];
+            String secondipWithSubnet = args[1];
+            String firstip = firstipWithSubnet.split("/")[0];
+            String secondip = secondipWithSubnet.split("/")[0];
+            String firstSubnet = firstipWithSubnet.split("/")[1];
+            String secondSubnet = secondipWithSubnet.split("/")[1];
+            ArrayList<Integer> firstipInBinary = convertIpToBinary(firstip);
+            ArrayList<Integer> secondipInBinary = convertIpToBinary(secondip);
+            int[] firstSubnetInBinary = subnetFromCidr(Integer.parseInt(firstSubnet));
+            int[] secondSubnetInBinary = subnetFromCidr(Integer.parseInt(secondSubnet));
+            int[] firstipResult = andOperation(firstipInBinary, firstSubnetInBinary);
+            int[] secondipResult = andOperation(secondipInBinary, secondSubnetInBinary);
+            if(Arrays.equals(firstipResult, secondipResult)){
+                //if both the and operation are same,then they fall in the same network
+                System.out.println("They are in the same network");
+                System.exit(0);
+            }
+            System.out.println("They are not in the same network");
+            System.exit(0);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            //Wrong format of the arguments
+            System.out.println("Wrong format of the arguments, invalid CIDR or probably you entered a decimal more than 255");
+        }
+        
+    }
+}
